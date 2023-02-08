@@ -8,6 +8,8 @@ jobs:
   deploy:
     name: deploy
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Check out repo's default branch
         uses: actions/checkout@v3
