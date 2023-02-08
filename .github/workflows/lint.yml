@@ -15,5 +15,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.13.x
+      - name: install packages
+        run: npm i
       - name: Go lint
         run: npm run lint
