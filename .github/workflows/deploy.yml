@@ -17,8 +17,10 @@ jobs:
           node-version: 16.13.x
       - name: Install packages
         run: npm i
-      - name: Start lint
+      - name: Lint
         run: npm run lint
+      - name: Build
+        run: npm run build
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
