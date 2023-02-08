@@ -5,11 +5,11 @@ on:
     branches:
       - main
 jobs:
-  prepare:
-    name: prepare
+  deploy:
+    name: deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repo's main branch
+      - name: Check out repo's default branch
         uses: actions/checkout@v3
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -17,13 +17,10 @@ jobs:
           node-version: 16.13.x
       - name: Install packages
         run: npm i
-
-  lint:
-    name: lint
-    needs: prepare
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repo's main branch
-        uses: actions/checkout@v3
       - name: Start lint
         run: npm run lint
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+      
