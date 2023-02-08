@@ -1,12 +1,12 @@
-name: learn-github-actions
-run-name: ${{ github.actor }} is testing
+name: deploy
+run-name: ${{ github.actor }} pushed in ${{github.ref_name}}
 on:
   push:
     branches:
       - main
 jobs:
-  go-lint-test:
-    name: linting
+  lint:
+    name: lint
     runs-on: ubuntu-latest
     steps:
       - name: Check out repo's default branch
@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.13.x
-      - name: install packages
+      - name: Install packages
         run: npm i
-      - name: Go lint
+      - name: Start lint
         run: npm run lint
