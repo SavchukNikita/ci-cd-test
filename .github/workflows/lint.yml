@@ -5,11 +5,11 @@ on:
     branches:
       - main
 jobs:
-  lint:
-    name: lint
+  preapare:
+    name: prepare
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repo's default branch
+      - name: Check out repo's main branch
         uses: actions/checkout@v3
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -17,5 +17,10 @@ jobs:
           node-version: 16.13.x
       - name: Install packages
         run: npm i
+
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
       - name: Start lint
         run: npm run lint
